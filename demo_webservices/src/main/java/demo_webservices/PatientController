@@ -1,0 +1,35 @@
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
+
+@RestController
+@RequestMapping(path = "/patient")
+public class PatientController{
+
+    @Autowired
+    private PatientRepository patientRepository;
+
+    @PostMapping(path ="/add")
+    public @ResponseBody
+    String addNewUser (@RequestBody PatientDTO patientDIO) {
+
+
+        Patient patient = new Patient();
+        patient.setPatientName(patientDTO.getPatientName());
+        patient.setContactNumber(patientDTO.getContactNumber());
+        patient.setEmail(patientDTO.getEmail());
+        patient.setHistory(patientDIO.getHistory());
+        patient.setAddress(patientDIO.getAddress());
+        patientRepository.save(patient);
+        return "patient Account Created";
+    }
+
+    @GetMapping(path = "/all")
+    public @ResponseBody
+    Optional<Patient> getAllUsers () {
+        int id = 1;
+        return patientRepository.findByID(Long.valueOf(id));
+    }
+}
