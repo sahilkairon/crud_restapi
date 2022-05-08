@@ -8,16 +8,9 @@ public class FacilityController {
     private FacilityRepository facilityRepository;
 
     @PostMapping(path = "/add")
-    public @ResponseBody
-    String addNewUser(@RequestBody FacilityDTO facilityDTO) {
-        Facility facility = new Facility();
-        facility.setFacilityName(facilityDTO.getFacilityName());
-        facility.setFacilitylype(facilityDTO.getFacilitylype());
-        facility.setDateTime(facilityDTO.getDateTime());
-        facility.setReferredBy(facilityDTO.getReferredBy());
-        facility.setDeposit(facilityDTO.getDeposit());
-        facilityRepository.save(facility);
-        return "Facility Created";
+    @ResponseBody
+    Public String addNewUser(@RequestBody FacilityDTO facilityDTO) {
+       
     }
 
     @GetMapping(path = "/all")
